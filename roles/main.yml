@@ -1,4 +1,5 @@
 ---
+
 - hosts: localhost
   become: true
   roles:
