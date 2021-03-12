@@ -14,7 +14,29 @@
     - tree
    state: present
 
-- name: Install ImageMagick (optional dependency for image rendering)
+- name: Install archival utils
+  pacman:
+    name:
+      - atool
+      - p7zip
+      - unrar
+      - unzip
+      - xz
+      - zip
+      - bzip2
+      - gzip
+      - tar
+    state: present
+
+- name: Install download utils
+  pacman:
+    name:
+      - aria2
+      - curl
+      - wget
+    state: present
+
+- name: Install ImageMagick
   pacman:
     name: imagemagick
     state: present

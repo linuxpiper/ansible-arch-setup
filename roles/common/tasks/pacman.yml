@@ -1,0 +1,23 @@
+- name: Enable pacman colourised output and verbose package lists
+  replace:
+    path: /etc/pacman.conf
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+  with_items:
+    - { regexp: '^#Color$', replace: 'Color' }
+    - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
+
+- name: Enable repositories
+  replace:
+    path: /etc/pacman.conf
+    regexp: '^#\[{{ item }}\]$\n^#Include\s+=\s+/etc/pacman.d/mirrorlist$'
+    replace: '[{{ item }}]\nInclude = /etc/pacman.d/mirrorlist'
+  with_items: '{{ pacman.repos }}'
+  notify: Update pacman cache
+  when: pacman.repos is defined
+
+- name: Ignore 'modified' group
+  replace:
+    path: /etc/pacman.conf
+    regexp: '^#IgnoreGroup =$'
+    replace: 'IgnoreGroup = modified'

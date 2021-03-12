@@ -3,6 +3,12 @@
    update_cache: yes
    upgrade: yes
 
+- name: Install rcm
+  aur: name=rcm user={{ username }}
+
+# Configure pacman (colorize and repos)
+- include: pacman.yml
+
 # Basic apps (vlc, kitty, etc.)
 - include: core-apps.yml
 
