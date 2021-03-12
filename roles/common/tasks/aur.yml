@@ -11,3 +11,6 @@
 
 - name: Install rcm
   aur: name=rcm user={{ username }} 
+
+- name: Instal micro editor
+  aur: name=micro-nightly-bin user={{ username }}
