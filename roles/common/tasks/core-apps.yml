@@ -12,6 +12,7 @@
     - vim
     - source-highlight
     - tree
+    - base-devel
    state: present
 
 - name: Install archival utils

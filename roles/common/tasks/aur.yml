@@ -1,0 +1,13 @@
+- name: Create AUR directory
+  file: path=/home/{{ username }}/{{ aur.dir }}
+        state=directory
+        owner={{ username }}
+        group={{ username }}
+
+- name: Install AUR base packages
+  aur:
+    name: "{{ aur.packages }}"
+    user: "{{ username }}"
+
+- name: Install rcm
+  aur: name=rcm user={{ username }} 

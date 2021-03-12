@@ -24,6 +24,23 @@ install_terminal_browsers: True
 ## Installs LibreOffice Fresh when True
 install_office: True
 
-## Spacevim?
+## Spacevim? You know you need it
 install_spacevim: True
+## ===========================
+
+
+## AUR vars
+## ===========================
+use_aur: True
+
+aur:
+    dir: aur
+    packages:
+        - yay
+        - downgrade
+        - zplug
+        - miller
+        - myrepos
+        - ctmg
+        - spiped
 ## ===========================

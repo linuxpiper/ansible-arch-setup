@@ -3,8 +3,6 @@
    update_cache: yes
    upgrade: yes
 
-- name: Install rcm
-  aur: name=rcm user={{ username }}
 
 # Configure pacman (colorize and repos)
 - include: pacman.yml
@@ -34,3 +32,7 @@
 # Office
 - include: office.yml
   when: install_office == True
+
+# AUR apps
+- include: aur.yml
+  when: use_aur == True
