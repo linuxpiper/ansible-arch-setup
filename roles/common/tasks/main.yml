@@ -10,6 +10,10 @@
 - include: zsh.yml
   when: setup_zsh == True
 
+# Install and configure spacevim
+- include: spacevim.yml
+  when: install_spacevim == True
+
 # Install KDE and Additional Plasma Applications
 - include: kde.yml
   when: install_kde == True
@@ -23,3 +27,4 @@
 
 # Office
 - include: office.yml
+  when: install_office == True

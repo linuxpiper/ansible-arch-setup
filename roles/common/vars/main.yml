@@ -20,4 +20,10 @@ browser: vivaldi
 
 ## When set to True, will install elinks and w3m
 install_terminal_browsers: True
+
+## Installs LibreOffice Fresh when True
+install_office: True
+
+## Spacevim?
+install_spacevim: True
 ## ===========================

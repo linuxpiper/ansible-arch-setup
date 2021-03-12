@@ -1,0 +1,27 @@
+---
+- name: Create SpaceVim.d directory
+  file:
+    path: "/home/{{ username }}/.SpaceVim.d"
+    state: directory
+
+- name: Get init.toml file
+  get_url:
+    url: https://raw.githubusercontent.com/SpaceVim/SpaceVim/master/mode/dark_powered.toml
+    dest: "/home/{{ username }}/.SpaceVim.d/init.toml"
+
+- name: Get SpaceVim install script
+  get_url:
+    url: https://spacevim.org/install.sh
+    dest: "/home/{{ username }}/install-spacevim.sh"
+    mode: "0747"
+
+- name: Install SpaceVim
+  become: True
+  become_user: "{{ username }}"
+  command: "bash /home/{{ username }}/install-spacevim.sh"
+
+- name: Add custom vim plugins
+  blockinfile:
+    path: "/home/{{ username }}/.SpaceVim.d/init.toml"
+    insertafter: EOF
+    content: "{{ custom_vim_plugins }}"

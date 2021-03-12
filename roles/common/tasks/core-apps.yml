@@ -9,4 +9,12 @@
     - thefuck
     - tmux
     - lsd
+    - vim
+    - source-highlight
+    - tree
    state: present
+
+- name: Install ImageMagick (optional dependency for image rendering)
+  pacman:
+    name: imagemagick
+    state: present
