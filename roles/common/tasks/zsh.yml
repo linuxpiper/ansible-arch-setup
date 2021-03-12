@@ -1,0 +1,60 @@
+---
+
+- name: install zsh
+  community.general.pacman:
+   name: 
+    - zsh
+   state: present
+
+- name: install fzf for zsh
+  community.general.pacman:
+   name: 
+    - fzf
+   state: present
+
+
+- name: change "{{ username }}"'s shell to zsh
+  become: yes
+  user:
+   name: "{{ username }}"
+   shell: /usr/bin/zsh
+
+- name: copy zsh dotfile
+  copy: 
+   src: user_home/.zshrc 
+   dest: /home/{{ username }}/.zshrc
+   force: False
+   owner: "{{ username }}"
+   group: "{{ username }}"
+   mode: u+rw,g+r,o--
+
+- name: copy zsh p10k dotfile
+  copy: 
+   src: user_home/.p10k.zsh
+   dest: /home/{{ username }}/.p10k.zsh
+   force: False
+   owner: "{{ username }}"
+   group: "{{ username }}"
+   mode: u+rw,g+r,o--
+
+- name: clone oh-my-zsh for users
+  tags:
+    # Suppress warning: [ANSIBLE0006] git used in place of git module
+    # Git module doesn't allow us to set `core.autocrlf=input`.
+    - skip_ansible_lint
+  become: yes
+  become_user: '{{ username }}'
+  # core.autocrlf=input prevents https://github.com/robbyrussell/oh-my-zsh/issues/4402
+  command: 'git clone -c core.autocrlf=input https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
+  args:
+    chdir: '~{{ username }}'
+    creates: '~{{ username }}/.oh-my-zsh'
+
+
+- name: copy powerlevel10k theme
+  copy:
+   src: zsh-theme-powerlevel10k/
+   dest: /usr/share/zsh-theme-powerlevel10k/
+   force: False
+   mode: u+rw,g+xr,o+x
+

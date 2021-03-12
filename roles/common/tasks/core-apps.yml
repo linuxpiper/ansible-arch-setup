@@ -1,0 +1,12 @@
+- name: install basic utils, shells, apps
+  community.general.pacman:
+   name:
+    - xorg
+    - kitty
+    - vlc
+    - gimp
+    - git
+    - thefuck
+    - tmux
+    - lsd
+   state: present

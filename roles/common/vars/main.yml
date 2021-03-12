@@ -1,0 +1,23 @@
+### Playbook Configuration Variables
+# You may modify the following variables to customize the playbook to your
+# specific needs, however do not remove any variables, they are all required
+# for the playbook to function.
+
+## User info
+username: linuxpiper
+
+## Task Configuration
+setup_zsh: True
+
+## Desktop
+install_kde: True
+
+## App Preferences
+## ===========================
+# Web Browser
+# Value can be: vivaldi, firefox, brave, or chromium
+browser: vivaldi
+
+## When set to True, will install elinks and w3m
+install_terminal_browsers: True
+## ===========================

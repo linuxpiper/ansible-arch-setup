@@ -1,0 +1,5 @@
+- name: install LibreOffice Fresh (EN)
+  community.general.pacman:
+   name: 
+    - libreoffice-fresh
+   state: present 

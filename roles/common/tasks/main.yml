@@ -1,0 +1,25 @@
+- name: check updates
+  pacman: 
+   update_cache: yes
+   upgrade: yes
+
+# Basic apps (vlc, kitty, etc.)
+- include: core-apps.yml
+
+# Install and configure zsh
+- include: zsh.yml
+  when: setup_zsh == True
+
+# Install KDE and Additional Plasma Applications
+- include: kde.yml
+  when: install_kde == True
+
+# Web Browser
+- include: "{{browser}}.yml"
+
+# Terminal web browsers
+- include: terminal_browsers.yml
+  when: install_terminal_browsers == True
+
+# Office
+- include: office.yml

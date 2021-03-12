@@ -1,0 +1,6 @@
+- name: install Vivaldi and optionals
+  community.general.pacman:
+   name: 
+    - vivaldi
+    - vivaldi-ffmpeg-codecs
+   state: present 

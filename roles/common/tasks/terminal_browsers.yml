@@ -1,0 +1,6 @@
+- name: install term browsers
+  community.general.pacman:
+   name:
+    - w3m
+    - elinks
+   state: present

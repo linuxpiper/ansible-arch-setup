@@ -1,0 +1,5 @@
+- name: install Chromium
+  community.general.pacman:
+   name: 
+    - chromium
+   state: present 

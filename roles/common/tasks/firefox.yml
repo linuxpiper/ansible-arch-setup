@@ -1,0 +1,7 @@
+- name: install Firefox and privacy optionals
+  community.general.pacman:
+   name: 
+    - firefox
+    - firefox-extension-privacybadger
+    - firefox-ublock-origin
+   state: present 
