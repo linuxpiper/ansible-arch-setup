@@ -13,4 +13,4 @@
   aur: name=rcm user={{ username }} 
 
 - name: Instal micro editor
-  aur: name=micro-nightly-bin user={{ username }}
+  aur: name=micro-git user={{ username }}
