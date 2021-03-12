@@ -1,0 +1,9 @@
+- name: Clone user dotfiles
+  git: repo={{ dotfiles.url }} dest=/home/{{ username }}/{{ dotfiles.destination }} accept_hostkey=yes update=no
+  become: yes
+  become_user: "{{ username }}"
+
+- name: Install user dotfiles
+  command: rcup -d /home/{{ username}}/{{ dotfiles.destination}} {{ dotfiles.rcup_flags }}
+  become: yes
+  become_user: "{{ username }}" 

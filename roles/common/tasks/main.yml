@@ -36,3 +36,7 @@
 # AUR apps
 - include: aur.yml
   when: use_aur == True
+
+# Dotfiles
+- include: dotfiles.yml
+  when: pull_dotfiles == True

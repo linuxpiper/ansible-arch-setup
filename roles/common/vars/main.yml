@@ -9,6 +9,15 @@ username: linuxpiper
 ## Task Configuration
 setup_zsh: True
 
+## Dotfiles
+## Please make sure to update 
+pull_dotfiles: True
+
+dotfiles:
+    url: https://github.com/linuxpiper/dotfiles.git
+    destination: projects/dotfiles
+    rcup_flags: -fx README.md
+
 ## Desktop
 install_kde: True
 
