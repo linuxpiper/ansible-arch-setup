@@ -20,6 +20,19 @@
         - [Dotfiles](#dotfiles)
       - [2. YML Files](#2-yml-files)
   - [WARNING](#warning)
+  - [FAQ](#faq)
+      - [Does this work with [insert distro here]?](#does-this-work-with-insert-distro-here)
+      - [Will this break my machine?](#will-this-break-my-machine)
+      - [It failed at some step, why?](#it-failed-at-some-step-why)
+      - [Can I safely rerun the playbook?](#can-i-safely-rerun-the-playbook)
+      - [My Plasma desktop doesn't look like the screenshot! Why?](#my-plasma-desktop-doesnt-look-like-the-screenshot-why)
+      - [I made it better, do you take pull requests?](#i-made-it-better-do-you-take-pull-requests)
+      - [I don't want KDE Plasma, can I skip it?](#i-dont-want-kde-plasma-can-i-skip-it)
+      - [I don't like Vivaldi, can I change it?](#i-dont-like-vivaldi-can-i-change-it)
+      - [How do I include my own dotfiles?](#how-do-i-include-my-own-dotfiles)
+      - [I have a question, how can I contact you?](#i-have-a-question-how-can-i-contact-you)
+      - [How can I support the project?](#how-can-i-support-the-project)
+      - [Where is the Code of Conduct?](#where-is-the-code-of-conduct)
 
 
 # Ansible Arch Linux Setup Project 
@@ -37,7 +50,7 @@ You can run the playbook as often or as many times as you'd like to keep your de
 
 I highly recommend you continue reading the sections below before proceeding with the quick start, but if you just want to get up and running, below are the **minimum** steps required.
 
-It's assumed the first time you run the playbook you're doing it on a fairly minimal Arch installation, though it's certainly not required. The project has been tested thoroughly on a minimal Manjaro XFCE installation but should work fine on any Arch or Arch based distro.
+It's assumed the first time you run the playbook you're doing it on a fairly minimal Arch installation, though it's certainly not required. The project has been tested thoroughly on a minimal Manjaro XFCE installation as well as ArcoLinux, but should work fine on any Arch or Arch based distro.
 
 ### Step 1: Clone this repository
 `git clone --recurse-submodules https://github.com/linuxpiper/ansible-arch-setup.git`
@@ -50,7 +63,7 @@ It's assumed the first time you run the playbook you're doing it on a fairly min
 ### Step 3: Update your system (optional)
 `sudo pacman -Syu`
 
-If you are running this project on a brand new, fresh Arch install, you can go ahead and update your system via pacman prior to running the playbook. You don't have to, but expect that the playbook will take a little longer when running for the first time.
+If you are running this project on a brand new, fresh Arch install, you can go ahead and update your system via pacman prior to running the playbook. You don't have to, but expect that the playbook will take a little longer when running for the first time since it will do the updates.
 
 ### Step 4: Update the username variable (critical)
 
@@ -58,6 +71,7 @@ Open up `roles/common/vars/main.yml` and change the `username` value to the appr
 
 You absolutely should review all of the vars config file and modify it to your liking, however changing the `username` variable to match the username you are running this project for is the minimum you need to do.
 
+If you want to use your own dotfiles, change the `dotfiles.url` value in the same config file to point to a git repo of your choosing.
 
 ### Step 5: Run the Playbook
 While in the `roles` directory, execute:
@@ -66,7 +80,9 @@ While in the `roles` directory, execute:
 
 The `-K` parameter is equivilent to `--ask-become-pass` and is used to collect your password for items requiring `become` permissions. 
 
-The playbook can take anywhere from 1 to 10 minutes or so depending on the speed on your machine and whether you chose to follow **Step 3**. It won't get stuck forever; be patient and wait for it to finish.
+The playbook can take anywhere from 1 to 10 minutes or so depending on the speed of your machine and whether you chose to follow **Step 3**. It won't get stuck forever; be patient and wait for it to finish.
+
+**Pro Tip:** *While you're waiting for the playbook to finish, think of all the things you **did not** have to do and praise yourself for using Linux. Maybe go grab a beer or something to celebrate your awesomeness.*
 
 ### Step 6: Reboot
 Yay!
@@ -121,6 +137,7 @@ No less important are all the other great apps that are deployed as part of the 
 - Terminal browsers (elinks and w3m)
 - Your choice of graphical web browser (Vivaldi (default), Firefox, Chromium, etc.)
 - yay for aur support
+- micro text editor
 - and more!
 
 ## What does it *not* do for me?
@@ -151,3 +168,44 @@ Most yml files that customize app configuration can be found in `roles/common/ta
 *This project is in its early stages and is being refactored and optimized using Ansible and Linux best practices. Whilst it should be safe enough, it's up to you to review the playbook and packages being installed and configured before running it on your machine.*
 
 
+## FAQ
+
+#### Does this work with [insert distro here]?
+Right now, only Arch Linux and Arch Linux derivatives are supported.
+
+#### Will this break my machine?
+It shouldn't, it will most likely make it awesome.
+
+#### It failed at some step, why?
+You could be missing a dependency or maybe you already have another version of the same package installed (e.g. micro-bin instead of micro-git). You can comment out that item from the yml file and re-run the playbook.
+
+Feel free to open an issue on Github if you need a hand.
+
+#### Can I safely rerun the playbook?
+As often as you'd like. Just keep in mind that if you removed some packages after previously running the playbook, they will be reinstalled.
+
+#### My Plasma desktop doesn't look like the screenshot! Why?
+KDE Plasma has a million different config files spread out all over the place, and while I am considering adding a role to make the final plasma desktop look like mine, it's a huge amount of work to do it properly.
+
+It's actually easier to just customize it how you want - that's one of the biggest benefits of KDE Plasma.
+
+#### I made it better, do you take pull requests?
+Please and thank you! :)
+
+#### I don't want KDE Plasma, can I skip it?
+Sure - just set `install_kde` to `False` in the `/roles/common/vars/main.yml` file.
+
+#### I don't like Vivaldi, can I change it?
+You bet - open up `/roles/common/vars/main.yml` and change `browser: vivaldi` to one of the following values: `firefox`, `brave`, or `chromium`.
+
+#### How do I include my own dotfiles?
+It's so easy! Open up `/roles/common/vars/main.yml` and look for the `dotfiles:` section. Change the `url` to point to your own git repository. It doesn't have to be on Github, just publicly accessible.
+
+#### I have a question, how can I contact you?
+The best place to ask questions is to just open an issue in the Github repo. However you can email me at linuxpiper@gmail.com
+
+#### How can I support the project?
+This project is useless without all of the great free and open software it installs and configures. Donate to one of them!
+
+#### Where is the Code of Conduct?
+We don't do that stuff here. Be a grown up.
