@@ -4,7 +4,7 @@
 # for the playbook to function.
 
 ## User info
-username: linuxpiper
+username: keith
 
 ## Task Configuration
 setup_zsh: True
