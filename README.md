@@ -24,6 +24,14 @@
 # Ansible Arch Linux Setup Project 
 The Ansible Arch setup project aims to make your life easier when setting up a new environment with Arch Linux by automating a number of configurations and installations. Additionally, the project can assist in keeping your existing environment consistent and updated the way you like it!
 
+You can run the playbook as often or as many times as you'd like to keep your desktop environment(s) sync'd and configured the way you want. Ansible is *idempotent*, so it's built for re-running without breaking anything.
+
+![run1.png](images/run1.png)
+
+*Pro Tip: if you want those lovely cows instead of the boring standard Ansible output, install cowsay before running the playbook*
+
+![run2.png](images/run2.png)
+
 ## Quick Start
 
 I highly recommend you continue reading the sections below before proceeding with the quick start, but if you just want to get up and running, below are the **minimum** steps required.
@@ -126,6 +134,8 @@ Simply change any variable to False if you'd like to skip that part of installat
 
 ##### Dotfiles
 Your dotfiles can be pulled each time you run the ansible playbook by simply pointing the `dotfiles.url` key to a valid git URL.
+
+Dotfiles are synced / managed using [rcm](https://github.com/thoughtbot/rcm) which comes from the AUR. If you disable AUR in the vars file  (`use_aur`)  you cannot pull your dotfiles without tweaking the `dotfiles.yml` file to exclude rcm.
 
 #### 2. YML Files
 
