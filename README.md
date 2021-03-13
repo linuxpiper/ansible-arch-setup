@@ -14,6 +14,10 @@
       - [SpaceVim](#spacevim)
       - [LibreOffice (Fresh)](#libreoffice-fresh)
       - [Others](#others)
+  - [Customization](#customization)
+      - [1. Variables](#1-variables)
+        - [Dotfiles](#dotfiles)
+      - [2. YML Files](#2-yml-files)
   - [WARNING](#warning)
 
 
@@ -109,7 +113,23 @@ No less important are all the other great apps that are deployed as part of the 
 - and more!
 
 
+## Customization
 
+There are two key areas for customizing your deployment.
+
+#### 1. Variables
+The file `roles/common/vars/main.yml` contains all of the main configuration variables to quickly customize what to install and how.
+
+![main.yml.png](images/main.yml.png)
+
+Simply change any variable to False if you'd like to skip that part of installation. 
+
+##### Dotfiles
+Your dotfiles can be pulled each time you run the ansible playbook by simply pointing the `dotfiles.url` key to a valid git URL.
+
+#### 2. YML Files
+
+Most yml files that customize app configuration can be found in `roles/common/tasks`. You can edit any existing yml file, or add your own and include it in the `main.yml` playbook.
 
 ## WARNING
 *This project is in its early stages and is being refactored and optimized using Ansible and Linux best practices. Whilst it should be safe enough, it's up to you to review the playbook and packages being installed and configured before running it on your machine.*
