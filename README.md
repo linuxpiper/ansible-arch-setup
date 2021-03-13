@@ -7,6 +7,7 @@
     - [Step 5: Run the Playbook](#step-5-run-the-playbook)
     - [Step 6: Reboot](#step-6-reboot)
   - [What does it do for me?](#what-does-it-do-for-me)
+  - [What does it *not* do for me?](#what-does-it-not-do-for-me)
     - [Main Apps and Configs](#main-apps-and-configs)
       - [zsh with powerline10k, lsd, and Oh My Zsh!](#zsh-with-powerline10k-lsd-and-oh-my-zsh)
       - [Kitty (Terminal)](#kitty-terminal)
@@ -35,6 +36,8 @@ You can run the playbook as often or as many times as you'd like to keep your de
 ## Quick Start
 
 I highly recommend you continue reading the sections below before proceeding with the quick start, but if you just want to get up and running, below are the **minimum** steps required.
+
+It's assumed the first time you run the playbook you're doing it on a fairly minimal Arch installation, though it's certainly not required. The project has been tested thoroughly on a minimal Manjaro XFCE installation but should work fine on any Arch or Arch based distro.
 
 ### Step 1: Clone this repository
 `git clone --recurse-submodules https://github.com/linuxpiper/ansible-arch-setup.git`
@@ -72,6 +75,10 @@ Yay!
 A lot! We'll get to the specifics, but what's more important is that even if you haven't used Ansible, you can easily follow along in the config files (.yml files) and tailor it to your liking. You don't need to be a programmer, devops engineer, or rocket scientist...it's really easy to customize.
 
 Any time you set up a new machine running Arch or any flavor of Arch you can simply run this playbook to get your new machine up and running the way you like it. 
+
+
+## What does it *not* do for me?
+This playbook will not currently configure display drivers, kernels, specific mirrors, user groups, or other core tasks that could potentially nuke your system. I may add this as an additional, separate role later on but for now I've taken a fairly conservative route.
 
 ### Main Apps and Configs
 #### zsh with powerline10k, lsd, and Oh My Zsh!
