@@ -37,6 +37,8 @@ install_office: True
 install_spacevim: True
 ## ===========================
 
+## Console-based email client
+install_aerc: True
 
 ## AUR vars
 ## ===========================

@@ -1,7 +1,5 @@
-- name: install Firefox and privacy optionals
+- name: install aerc
   community.general.pacman:
    name: 
-    - firefox
-    - firefox-extension-privacybadger
-    - firefox-ublock-origin
+    - aerc
    state: present 

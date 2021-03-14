@@ -33,6 +33,10 @@
 - include: office.yml
   when: install_office == True
 
+# Console based Email
+- include: aerc.yml
+  when: install_aerc == True
+  
 # AUR apps
 - include: aur.yml
   when: use_aur == True
